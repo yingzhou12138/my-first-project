@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apartment-price-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apartment-price-api
+  template:
+    metadata:
+      labels:
+        app: apartment-price-api
+    spec:
+      containers:
+        - name: api
+          image: apartment-price-api:hw2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
